@@ -10,7 +10,11 @@ import { Header } from "../components/header";
 import { NoteEditor } from "../components/NoteEditor";
 import { NoteCard } from "../components/NoteCard";
 
+
+
 const Home: NextPage = () => {
+  const { data: session, status } = useSession();
+
   return (
     <>
       <Head>
@@ -20,13 +24,23 @@ const Home: NextPage = () => {
       </Head>
       <main>
         <Header />
-        <Content />
+        {status === "loading" && (
+          <p>Loading...</p> // Show a loading state while checking session
+        )}
+        {status === "unauthenticated" && (
+          <div>
+            <h1 className="text-3xl text-blue-500">Please log in to access your notes.</h1>
+          </div>
+        )}
+        {status === "authenticated" && <Content />}
       </main>
     </>
   );
 };
 
 export default Home;
+
+
 
 type Topic = RouterOutputs["topic"]["getAll"][0];
 
