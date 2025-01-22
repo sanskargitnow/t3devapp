@@ -24,7 +24,7 @@ const Home: NextPage = () => {
       </Head>
       <main>
         <Header />
-        {status === "loading" && (
+        {/* {status === "loading" && (
           <p>Loading...</p> // Show a loading state while checking session
         )}
         {status === "unauthenticated" && (
@@ -32,7 +32,8 @@ const Home: NextPage = () => {
             <h1 className="text-3xl text-blue-500">Please log in to access your notes.</h1>
           </div>
         )}
-        {status === "authenticated" && <Content />}
+        {status === "authenticated" && <Content />} */}
+        <Content/>
       </main>
     </>
   );
@@ -148,3 +149,7 @@ const Content: React.FC = () => {
     </div>
   );
 };
+
+
+
+
